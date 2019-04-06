@@ -53,3 +53,11 @@ def school_edit(request, id):
     else:
         form = SchoolForm(instance=school)
         return render(request, 'todo/school_form.html', {'form': form})
+
+# Delete
+def school_delete(request, id):
+    # School.objects.get(id=id).delete()
+    # return redirect('school_index')
+    if request.method == 'POST':
+        School.objects.get(id=id).delete()
+    return redirect('school_index')

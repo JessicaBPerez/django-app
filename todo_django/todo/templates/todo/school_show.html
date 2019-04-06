@@ -5,13 +5,19 @@
 <h2>{{ school.name }} <a href="/schools/{{school.id}}/edit">(edit)</a></h2>
 {% comment %} <h4>{{ artist.nationality }}</h4> {% endcomment %}
 
-{% comment %} <div>
-    <a href="{% url 'artist_delete' pk=artist.pk %}">Delete</a>
-</div> {% endcomment %}
+ {% comment %} <div>
+    <a href="{% url '_delete' pk=artist.pk %}">Delete</a>
+</div>  {% endcomment %}
 
 <img src="{{ school.image_url }}" alt="school photo" class="school-photo">
 
 <h3>School <a href="{% url 'school_new' %}">(+)</a></h3>
+
+<form action="/schools/{{school.id}}/delete">
+{% csrf_token %}
+<input type="submit" value="Delete {{school.name}}">
+</form>
+
 <ul>
     {% for professor in school.professors.all %}
         {% comment %} <li>
@@ -21,6 +27,10 @@
         </li> {% endcomment %}
         <h2>{{professor.name}}</h2>
        <img src="{{professor.image_url}}" alt="professor picture">
+        <form action="/schools/{{school.id}}/delete" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete {{school.name}}">
+      </form>
     {% endfor %}
 </ul>
 {% endblock %}

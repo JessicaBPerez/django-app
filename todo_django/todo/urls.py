@@ -10,4 +10,5 @@ urlpatterns = [
     path('schools/new/', views.school_new, name='school_new'),
     # path('professors/new/', views.professor_new, name='professor_new'),
     path('schools/<int:id>/edit', views.school_edit, name='school_edit'),
+    path('schools/<int:id>/delete', views.school_delete, name="school_delete"),
 ]
