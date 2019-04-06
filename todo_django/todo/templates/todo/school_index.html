@@ -1,0 +1,13 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<h1>SCHOOLS <a href="{% url 'school_new' %}">(+)</a></h1>
+<ul>
+    {% for school in schools %}
+        <div>
+       {% comment %} <h2><a href="{% url 'school_show' id=school.id %}">{{school.name}}</a></h2> {% endcomment %}
+       <h2><a href="/schools/{{school.id}}">{{school.name}}</a></h2>
+       <img src="{{school.image_url}}" />
+        </div>
+    {% endfor%}
+{% endblock %}

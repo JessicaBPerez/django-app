@@ -1,0 +1,26 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<h2>{{ school.name }} <a href="/schools/{{school.id}}/edit">(edit)</a></h2>
+{% comment %} <h4>{{ artist.nationality }}</h4> {% endcomment %}
+
+{% comment %} <div>
+    <a href="{% url 'artist_delete' pk=artist.pk %}">Delete</a>
+</div> {% endcomment %}
+
+<img src="{{ school.image_url }}" alt="school photo" class="school-photo">
+
+<h3>School <a href="{% url 'school_new' %}">(+)</a></h3>
+<ul>
+    {% for professor in school.professors.all %}
+        {% comment %} <li>
+            <a href="{% url 'song_show' pk=song.pk %}">
+                {{ song.title }}-{{ song.album }}
+            </a>
+        </li> {% endcomment %}
+        <h2>{{professor.name}}</h2>
+       <img src="{{professor.image_url}}" alt="professor picture">
+    {% endfor %}
+</ul>
+{% endblock %}
