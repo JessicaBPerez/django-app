@@ -20,17 +20,6 @@ def professor_show(request, id):
     context = {'professor': Professor.objects.get(id=id)}
     return render(request, 'todo/professor_show.html', context)
 
-# Forms for both
-# def school_new(request):
-#     if request.method == 'POST':
-#         form = SchoolForm(request.POST)
-#         if form.is_valid():
-#             school = form.save()
-#             return redirect('school_index', id=school.id)
-#     else:
-#         form = SchoolForm()
-#     return render(request, 'todo/school_form.html', {'form': form})
-
 def school_new(request):
     if request.method == 'POST':
         form = SchoolForm(request.POST)
@@ -41,6 +30,17 @@ def school_new(request):
     else:
         form = SchoolForm()
         return render(request, 'todo/school_form.html', {'form': form})
+
+def professor_new(request):
+    if request.method == 'POST':
+        form = ProfessorForm(request.POST)
+        if form.is_valid():
+            professor = form.save()
+            # Had to fix from 'school_index' to 'school_show'
+            return redirect('professor_show', id=professor.id)
+    else:
+        form = ProfessorForm()
+        return render(request, 'todo/professor_form.html', {'form': form})
 
 # Edit
 def school_edit(request, id):
@@ -54,6 +54,17 @@ def school_edit(request, id):
         form = SchoolForm(instance=school)
         return render(request, 'todo/school_form.html', {'form': form})
 
+def professor_edit(request, id):
+    professor = Professor.objects.get(id=id)
+    if request.method == "POST":
+        form = ProfessorForm(request.POST, instance = professor)
+        if form.is_valid():
+            professor = form.save()
+            return redirect('professor_show', id=professor.id)
+    else:
+        form = ProfessorForm(instance=professor)
+        return render(request, 'todo/professor_form.html', {'form': form})
+
 # Delete
 def school_delete(request, id):
     # School.objects.get(id=id).delete()
@@ -61,3 +72,11 @@ def school_delete(request, id):
     if request.method == 'POST':
         School.objects.get(id=id).delete()
     return redirect('school_index')
+
+
+def professor_delete(request, id):
+    # School.objects.get(id=id).delete()
+    # return redirect('school_index')
+    if request.method == 'POST':
+        Professor.objects.get(id=id).delete()
+    return redirect('professor_index')

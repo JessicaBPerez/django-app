@@ -1,0 +1,19 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<h1>PROFESSORS</h1>
+  <div class="">
+      <h2><a href="/professors/{{professor.id}}">{{professor.name}}</a></h2>
+      <img src="{{professor.image_url}}" alt="Picture of {{professor.name}}"/>
+      <h4>{{professor.subject}}</h4>
+
+<h2>{{ professor.name }} <a href="/professors/{{professor.id}}/edit">(edit)</a></h2>
+  </div>
+  <p>
+    {% comment %} <a href="/students/{{student.id}}/edit"> Edit {{student.name}} </a> {% endcomment %}
+  </p>
+  <form action="/professors/{{professor.id}}/delete" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete {{professor.name}}">
+  </form>
+{% endblock %}

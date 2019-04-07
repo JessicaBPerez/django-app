@@ -27,9 +27,11 @@
         </li> {% endcomment %}
         <h2>{{professor.name}}</h2>
        <img src="{{professor.image_url}}" alt="professor picture">
-        <form action="/schools/{{school.id}}/delete" method="POST">
+       <h3>{{professor.subject}}</h3>
+       <h1>{{professor.school}}</h1>
+        <form action="/professors/{{professor.id}}/delete" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Delete {{school.name}}">
+        <input type="submit" value="Delete {{professor.name}}">
       </form>
     {% endfor %}
 </ul>

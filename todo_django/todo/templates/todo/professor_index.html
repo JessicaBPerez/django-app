@@ -1,12 +1,13 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>PROFESSORS <a href="">(+)</a></h1>
+<h1>PROFESSORS <a href="/professors/new">(+)</a></h1>
 <ul>
     {% for professor in professors %}
-        <li>
-        <a href="">{{professor.name}}</a>
-        <li>
+       <div>
+        <a href="/professors/{{professor.id}}">{{professor.name}}</a>
+        <h3>{{professor.school}}</h3>
+       <div>
     {% endfor%}
 </ul>
 {% endblock %}
