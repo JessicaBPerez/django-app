@@ -6,19 +6,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/todo.css' %}">
   <title> Professor Rater </title>
 </head>
 <body>
-  <nav>
-    <h1>Welcome to Professor Rater!</h1>
-    <h2>
-      <a href="/schools"> View Schools</a> | <a href="/professors"> View /professors </a>| <a href="/professors/new"> Add New Professors </a></h2> 
+  <nav class="background">
+  
+    <a href="/professors/new"> Add New Professors </a></h2> 
       {% comment %} <a href="/students/new"> Enroll </a></h2> {% endcomment %}
   </nav>
 
+<nav class="navbar navbar-expand-lg navbar-light nav-background">
+<a class="navbar-brand" href="/">
+    <img src="static/images/lotus.png" width="35" height="35" class="d-inline-block align-top brand-text"><p class="d-inline-block align-top brand-text">
+    Eminence</p>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div class="navbar-nav navlink-margin">
+      <a class="nav-item nav-link" href="/schools">Schools <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="/professors">Professors <span class="sr-only">(current)</span></a>
+      {% comment %} <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> {% endcomment %}
+    </div>
+  </div>
+</nav>
 
   {% block content %}
   {% endblock %}
+
+ <footer class="nav-background">
+<div class= "navbar navbar-inverse navbar-static-bottom justify-content-center" role="navigation">
+    <div class="navbar-text pull-left">
+    </div>
+    <div class="navbar-text">
+    &copy; Jessica Perez, 2019
+    </div>
+</div>	
+</footer> 
+
 </body>
+
 </html>

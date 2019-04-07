@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=El+Messiri|Fredericka+the+Great|Galada|Lobster|Lobster+Two|Lora|Merriweather|Nanum+Gothic|Noto+Sans+SC|PT+Serif|Playfair+Display|Poiret+One|Sail|Sorts+Mill+Goudy');
+.background {
+    background-color: pink;
+}
+
+.nav-background {
+    background-color: whitesmoke;
+    height: 78px;
+}
+
+.brand-text {
+    font-size: 1.7rem;
+    margin-left: 1.3rem;
+    font-family: 'Lobster';
+}
+
+.navlink-margin {
+    margin: 0 2rem;
+    font-family: 'sorts mill goudy';
+    font-size: 1.2rem;
+}
+
+.card-inline {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+}

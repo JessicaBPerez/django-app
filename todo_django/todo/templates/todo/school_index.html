@@ -4,10 +4,19 @@
 <h1>SCHOOLS <a href="{% url 'school_new' %}">(+)</a></h1>
 <ul>
     {% for school in schools %}
-        <div>
+        {% comment %} <div> {% endcomment %}
        {% comment %} <h2><a href="{% url 'school_show' id=school.id %}">{{school.name}}</a></h2> {% endcomment %}
-       <h2><a href="/schools/{{school.id}}">{{school.name}}</a></h2>
+       {% comment %} <h2><a href="/schools/{{school.id}}">{{school.name}}</a></h2>
        <img src="{{school.image_url}}" />
-        </div>
+        </div> {% endcomment %}
+
+<div class="w3-row" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="{{school.image_url}}" style="width:100%">
+        <p><a href="/schools/{{school.id}}">{{school.name}}</a><br><b>$19.99</b></p>
+      </div>
+    </div>
+</div>
     {% endfor%}
 {% endblock %}

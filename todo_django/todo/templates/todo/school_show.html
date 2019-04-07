@@ -3,6 +3,9 @@
 {% block content %}
 
 <h2>{{ school.name }} <a href="/schools/{{school.id}}/edit">(edit)</a></h2>
+<div>
+<a href="/schools/{{school.id}}/edit">EDIT SCHOOL</a>
+</div>
 {% comment %} <h4>{{ artist.nationality }}</h4> {% endcomment %}
 
  {% comment %} <div>
@@ -13,26 +16,50 @@
 
 <h3>School <a href="{% url 'school_new' %}">(+)</a></h3>
 
-<form action="/schools/{{school.id}}/delete">
-{% csrf_token %}
-<input type="submit" value="Delete {{school.name}}">
+<form action="/schools/{{school.id}}/delete" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete {{school.name}}">
 </form>
+
+{% comment %} <form action="/schools/{{school.id}}/delete">
+        {% csrf_token %}
+        <input type="submit" value="Delete {{school.name}}">
+</form> {% endcomment %}
+
+{% comment %} <form action="/schools/{{school.id}}/delete">
+{% csrf_token %}
+<input type="submit" value="Delete thizzz {{school.name}}">
+</form> {% endcomment %}
+
+{% comment %} <form action="/schools/{{school.id}}/delete" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete This {{school.name}}">
+</form> {% endcomment %}
 
 <ul>
     {% for professor in school.professors.all %}
-        {% comment %} <li>
-            <a href="{% url 'song_show' pk=song.pk %}">
-                {{ song.title }}-{{ song.album }}
-            </a>
-        </li> {% endcomment %}
-        <h2>{{professor.name}}</h2>
+
+        {% comment %} <h2>{{professor.name}}</h2>
        <img src="{{professor.image_url}}" alt="professor picture">
        <h3>{{professor.subject}}</h3>
        <h1>{{professor.school}}</h1>
         <form action="/professors/{{professor.id}}/delete" method="POST">
         {% csrf_token %}
         <input type="submit" value="Delete {{professor.name}}">
+      </form> {% endcomment %}
+
+  <div class="w3-row">
+    <div class="w3-col l3 s6">
+      <div class="w3-container">
+        <img src="{{professor.image_url}}" style="width:100%">
+        <p>Expertise: {{professor.subject}}<br><b>{{professor.school}}</b></p>
+        <form action="/professors/{{professor.id}}/delete" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete {{professor.name}}">
       </form>
+      </div>
+    </div>
+  </div>
     {% endfor %}
 </ul>
 {% endblock %}

@@ -8,6 +8,7 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
+
 class Professor(models.Model):
     name = models.CharField(default = '', max_length = 200)
     image_url = models.CharField(default = '', max_length = 600)
