@@ -2,64 +2,82 @@
 
 {% block content %}
 
-<h2>{{ school.name }} <a href="/schools/{{school.id}}/edit">(edit)</a></h2>
-<div>
-<a href="/schools/{{school.id}}/edit">EDIT SCHOOL</a>
+<header class="masthead bg-primary text-white text-center">
+    <div class="container"><img class="img-fluid d-block mx-auto mb-5" src="{{ school.image_url }}" />
+        <h1 class="display-4 school-name animated pulse delay-1s">{{ school.name }}</h1>
+    </div>
+    <div class="button-margin">
+        <a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="/schools/{{school.id}}/edit">Edit School</a>
+    </div>
+</header>
+
+<section class="flex-container card-flex button-margin">
+   <div class="card bg-secondary" style="width: 23rem;">
+       <div class="card-header text-white card-align"><h5 class="card-text">Delete School</h5></div>
+       <div class="card-body">
+           <p class="card-text text-white">Not interested in this school's ratings? No problem, just delete below.</p>
+           <form action="/schools/{{school.id}}/delete" method="POST">
+               {% csrf_token %}
+               <input type="submit" value="Delete {{school.name}}" class="btn btn-danger">
+           </form>
+       </div>
+   </div>
+
+    <div class="card bg-secondary" style="width: 23rem;">
+       <div class="card-header text-white card-align"><h5 class="card-text">Add Schools</h5></div>
+       <div class="card-body">
+           <p class="card-text text-white">Want to add your own professor rankings? Get started by adding a new school.</p>
+           <button class="btn btn-info"><a class="text-white text-decoration-none" href="{% url 'school_new' %}">Add Schools</a></button>
+       </div>
+   </div>
+</section>
+
+
+
+{% comment %} <div class="school-name">
 </div>
-{% comment %} <h4>{{ artist.nationality }}</h4> {% endcomment %}
-
- {% comment %} <div>
-    <a href="{% url '_delete' pk=artist.pk %}">Delete</a>
-</div>  {% endcomment %}
-
-<img src="{{ school.image_url }}" alt="school photo" class="school-photo">
-
-<h3>School <a href="{% url 'school_new' %}">(+)</a></h3>
-
-<form action="/schools/{{school.id}}/delete" method="POST">
+<div>
+    <h3>School <a href="{% url 'school_new' %}">(+)</a></h3>
+    <form action="/schools/{{school.id}}/delete" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Delete {{school.name}}">
-</form>
+        <input type="submit" value="Delete {{school.name}}" class="btn btn-outline-warning">
+    </form>
+</div> {% endcomment %}
 
-{% comment %} <form action="/schools/{{school.id}}/delete">
-        {% csrf_token %}
-        <input type="submit" value="Delete {{school.name}}">
-</form> {% endcomment %}
-
-{% comment %} <form action="/schools/{{school.id}}/delete">
-{% csrf_token %}
-<input type="submit" value="Delete thizzz {{school.name}}">
-</form> {% endcomment %}
-
-{% comment %} <form action="/schools/{{school.id}}/delete" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Delete This {{school.name}}">
-</form> {% endcomment %}
-
-<ul>
+<ul class="flex-container card-flex">
     {% for professor in school.professors.all %}
 
-        {% comment %} <h2>{{professor.name}}</h2>
-       <img src="{{professor.image_url}}" alt="professor picture">
-       <h3>{{professor.subject}}</h3>
-       <h1>{{professor.school}}</h1>
-        <form action="/professors/{{professor.id}}/delete" method="POST">
-        {% csrf_token %}
-        <input type="submit" value="Delete {{professor.name}}">
-      </form> {% endcomment %}
-
-  <div class="w3-row">
+  {% comment %} <div class="w3-row">
     <div class="w3-col l3 s6">
       <div class="w3-container">
         <img src="{{professor.image_url}}" style="width:100%">
         <p>Expertise: {{professor.subject}}<br><b>{{professor.school}}</b></p>
         <form action="/professors/{{professor.id}}/delete" method="POST">
         {% csrf_token %}
-        <input type="submit" value="Delete {{professor.name}}">
+        <input type="submit" value="Delete {{professor.name}}" class="btn btn-outline-danger">
       </form>
       </div>
     </div>
-  </div>
+  </div> {% endcomment %}
+
+
+  <section style="margin-top: 8rem;">
+     <div class="card" style="width: 25rem;">
+         <img class="card-img-top" src="{{professor.image_url}}" alt="Styles Pictures">
+         <div class="card-body bg-primary">
+             <h3><a class="text-decoration-none school-name card-name-color" href="/professors/{{professor.id}}">{{professor.name}}</a></h3>
+             <p class="card-text text-white card-text">Expertise: {{professor.subject}}<br><b>{{professor.school}}</b></p>
+             <form class="button-margin" action="/professors/{{professor.id}}/delete" method="POST">
+              {% csrf_token %}
+                  <input type="submit" value="Delete {{professor.name}}" class="btn btn-outline-danger">
+             </form>
+         </div>
+     </div>
+  </section>
+
+
+
+
     {% endfor %}
 </ul>
 {% endblock %}

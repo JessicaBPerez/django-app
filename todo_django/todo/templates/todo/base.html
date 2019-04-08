@@ -6,40 +6,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/todo.css' %}">
   <title> Professor Rater </title>
 </head>
 <body>
-  <nav class="background">
-  
-    <a href="/professors/new"> Add New Professors </a></h2> 
-      {% comment %} <a href="/students/new"> Enroll </a></h2> {% endcomment %}
-  </nav>
 
-<nav class="navbar navbar-expand-lg navbar-light nav-background">
-<a class="navbar-brand" href="/">
-    <img src="static/images/lotus.png" width="35" height="35" class="d-inline-block align-top brand-text"><p class="d-inline-block align-top brand-text">
-    Eminence</p>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-    <div class="navbar-nav navlink-margin">
-      <a class="nav-item nav-link" href="/schools">Schools <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="/professors">Professors <span class="sr-only">(current)</span></a>
-      {% comment %} <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> {% endcomment %}
+<nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+    <div class="container-fluid"><a class="navbar-brand js-scroll-trigger brand-text" href="/">Eminence</a><button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1" role="presentation"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/schools">Schools</a></li>
+                <li class="nav-item mx-0 mx-lg-1" role="presentation"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/professors">Professors</a></li>
+                <li class="nav-item mx-0 mx-lg-1" role="presentation"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/professors/new">Add Professors</a></li>
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>
+
 
   {% block content %}
   {% endblock %}
 
- <footer class="nav-background">
+ {% comment %} <footer class="nav-background">
 <div class= "navbar navbar-inverse navbar-static-bottom justify-content-center" role="navigation">
     <div class="navbar-text pull-left">
     </div>
@@ -47,7 +40,7 @@
     &copy; Jessica Perez, 2019
     </div>
 </div>	
-</footer> 
+</footer>  {% endcomment %}
 
 </body>
 

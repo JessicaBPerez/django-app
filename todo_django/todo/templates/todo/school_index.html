@@ -1,22 +1,35 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>SCHOOLS <a href="{% url 'school_new' %}">(+)</a></h1>
-<ul>
-    {% for school in schools %}
-        {% comment %} <div> {% endcomment %}
-       {% comment %} <h2><a href="{% url 'school_show' id=school.id %}">{{school.name}}</a></h2> {% endcomment %}
-       {% comment %} <h2><a href="/schools/{{school.id}}">{{school.name}}</a></h2>
-       <img src="{{school.image_url}}" />
-        </div> {% endcomment %}
+{% comment %} <h1>SCHOOLS <a href="{% url 'school_new' %}">(+)</a></h1> {% endcomment %}
 
-<div class="w3-row" style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <div class="w3-col l3 s6">
-      <div class="w3-container">
-        <img src="{{school.image_url}}" style="width:100%">
-        <p><a href="/schools/{{school.id}}">{{school.name}}</a><br><b>$19.99</b></p>
-      </div>
+<header class="masthead2 text-center text-white">
+    <div class="masthead2-content">
+        <div class="container">
+            <h1 class="masthead2-heading mb-0 brand-text animated fadeInDown delay-1s">Eminence</h1>
+            <h2 class="masthead2-subheading mb-0 button-margin animated pulse delay-2s">See How Your Professor Rates</h2><a class="btn btn-primary btn-xl rounded-pill mt-5" role="button" href="{% url 'school_new' %}">Add A School</a></div>
     </div>
+    <div class="bg-circle-1 bg-circle"></div>
+    <div class="bg-circle-2 bg-circle"></div>
+    <div class="bg-circle-3 bg-circle"></div>
+    <div class="bg-circle-4 bg-circle"></div>
+</header>
+
+<div class="container button-margin2">
+    <p class="text-center index-text-1"><i class='fas fa-atom index-icon-margin' style='font-size:44px; color: #00adad;'></i>SCHOOLS<i class='fas fa-atom index-icon-margin' style='font-size:44px; color: #00adad;'></i></p>
+</div>
+
+
+<ul class="flex-container card-flex" style="margin-top: 1rem; margin-left: 2rem;">
+    {% for school in schools %}
+<div class="container">
+  <div class="" style="width:400px; margin-top: 3rem;">
+    <img class="card-img-top" src="{{school.image_url}}" alt="Card image" style="width:90%" height="350px">
+    <div class="card-body">
+      <h4 class="card-title"><a class="card-name-color index-name text-center" href="/schools/{{school.id}}">{{school.name}}</a><br></h4>
+      {% comment %} <a href="/schools/{{school.id}}" class="btn btn-primary">Professors</a> {% endcomment %}
+    </div>
+  </div>
 </div>
     {% endfor%}
 {% endblock %}

@@ -1,19 +1,51 @@
 {% extends 'todo/base.html' %}
 
 {% block content %}
-<h1>PROFESSORS</h1>
-  <div class="">
+<h2 class="text-center button-margin">PROFESSOR PROFILE</h2>
+<div>
+<hr class="container" />
+</div>
+  {% comment %} <div class="">
       <h2><a href="/professors/{{professor.id}}">{{professor.name}}</a></h2>
       <img src="{{professor.image_url}}" alt="Picture of {{professor.name}}"/>
       <h4>{{professor.subject}}</h4>
 
 <h2>{{ professor.name }} <a href="/professors/{{professor.id}}/edit">(edit)</a></h2>
   </div>
-  <p>
+  <p> {% endcomment %}
     {% comment %} <a href="/students/{{student.id}}/edit"> Edit {{student.name}} </a> {% endcomment %}
-  </p>
+  {% comment %} </p>
   <form action="/professors/{{professor.id}}/delete" method="POST">
     {% csrf_token %}
     <input type="submit" value="Delete {{professor.name}}">
-  </form>
+  </form> {% endcomment %}
+
+
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-6">
+                <div class="p-5"><img class="rounded-circle" src="{{professor.image_url}}" style="margin-left: 2rem;"/></div>
+            </div>
+            <div class="col-lg-6 order-lg-5">
+                <div class="">
+                    <h2 class="display-4">{{professor.name}}...</h2>
+                    <h2><a href="/professors/{{professor.id}}/edit">Edit</a></h2>
+                    <p><span class="courses-bold">Courses:</span> {{professor.subject}}</p>
+                    <p><span class="courses-bold">Education:</span> {{professor.education}}</p>
+                    {% comment %} <form action="/professors/{{professor.id}}/delete" method="POST">
+                      {% csrf_token %}
+                      <input type="submit" value="Delete {{professor.name}}">
+                    </form> {% endcomment %}
+                    <form class="button-margin" action="/professors/{{professor.id}}/delete" method="POST">
+                      {% csrf_token %}
+                       <input type="submit" value="Delete {{professor.name}}" class="btn btn-danger">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}

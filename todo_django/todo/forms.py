@@ -9,4 +9,4 @@ class SchoolForm(forms.ModelForm):
 class ProfessorForm(forms.ModelForm):
     class Meta:
         model = Professor
-        fields = ('name', 'image_url', 'subject', 'school')
+        fields = ('name', 'image_url', 'subject', 'education', 'school')
